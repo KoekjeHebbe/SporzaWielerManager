@@ -11,8 +11,7 @@ build/
 venv/
 env/
 
-# Generated output (re-created by maak_matrix.py)
-Database/Wielermanager_Matrix_Berekend.csv
+# Generated output
 Database/Wielermanager_Matrix_Berekend.xlsx
 
 # Backups (excluded per project rules)

@@ -1,6 +1,9 @@
+import os
 import streamlit as st
 import pandas as pd
 import pulp
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # --- CONFIGURATIE ---
 st.set_page_config(page_title="Sporza Transfer AI Pro", page_icon="🚴‍♂️", layout="wide")
@@ -9,10 +12,10 @@ st.title("🚴‍♂️ Sporza Wielermanager: De AI Masterplan Editie")
 @st.cache_data
 def laad_data():
     try:
-        df_b = pd.read_csv("Wielermanager_Matrix_Berekend.csv")
-        df_r = pd.read_csv("Copy of De Sporza Wielermanager - Wielermatrix.csv")
+        df_b = pd.read_csv(os.path.join(BASE_DIR, "Wielermanager_Matrix_Berekend.csv"))
+        df_r = pd.read_csv(os.path.join(BASE_DIR, "Copy of De Sporza Wielermanager - Wielermatrix.csv"))
         if 'Naam' not in df_r.columns:
-            df_r = pd.read_csv("Copy of De Sporza Wielermanager - Wielermatrix.csv", skiprows=11)
+            df_r = pd.read_csv(os.path.join(BASE_DIR, "Copy of De Sporza Wielermanager - Wielermatrix.csv"), skiprows=11)
         return df_b, df_r
     except Exception:
         return None, None
